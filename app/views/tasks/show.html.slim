@@ -1,0 +1,15 @@
+h1 タスクの詳細
+
+.nav.justify-content-end
+  = link_to '一覧', tasks_path, class: 'nav-link'
+table
+  tbody
+    tr
+      th= Task.human_attribute_name(:id)
+      td= @task.id
+    tr
+      th= Task.human_attribute_name(:name)
+      td= @task.name
+    tr
+      th= Task.human_attribute_name(:description)
+      td= @task.description
