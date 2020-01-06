@@ -2,7 +2,7 @@ h1 タスクの詳細
 
 .nav.justify-content-end
   = link_to '一覧', tasks_path, class: 'nav-link'
-table
+table.table.table-hover
   tbody
     tr
       th= Task.human_attribute_name(:id)
@@ -12,4 +12,10 @@ table
       td= @task.name
     tr
       th= Task.human_attribute_name(:description)
-      td= @task.description
+      td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Task.human_attribute_name(:created_at)
+      td= @task.created_at
+    tr
+      th= Task.human_attribute_name(:updated_at)
+      td= @task.updated_at
