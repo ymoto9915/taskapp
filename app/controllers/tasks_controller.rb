@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -11,6 +12,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
   end
 
   def create
@@ -19,7 +21,11 @@ class TasksController < ApplicationController
     redirect_to tasks_url, notice: "新しいタスク[#{task.name}]を登録したよ"
   end
 
-
+  def update
+    task =Task.find(params[:id])
+    task.update!(task_params)
+    redirect_to tasks_url, notice: "タスク「#{task.name}更新完了"
+  end
   private
 
   def task_params
